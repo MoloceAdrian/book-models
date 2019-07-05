@@ -1,34 +1,23 @@
+"""This module encapsulates models regarding the a book object."""
 from datetime import datetime
+from uuid import uuid4
 
-from book_models.models.author import Author
+from book_models.models.user import User
 
-# Questions:
-# should I import these and risk circular dependencies for type annotating?
-# Are these 2 classes too tightly coupled? But how should they be then? It made sense for me, but I can see obvious
-# flaws.
+
 class Book:
     """Basic model for a book."""
-    def __init__(self, author, title, publication_year):
-        self._author = author
-        self._title = title
-        self._publication_year = publication_year
-
-    def get_author(self) -> Author:
-        """Return the Author which wrote the book."""
-        return self._author
-
-    def get_title(self) -> str:
-        """Return the title of the book."""
-        return self._title
-
-    def get_publication_date(self) -> datetime:
-        """Return the year of publication."""
-        return self._publication_year
-
-    def set_publication_date(self, value: datetime):
-        """Set the year in which the book was published.
+    def __init__(self, author: User, title: str, genre: str, publication_date: datetime):
+        """Initializer.
 
         Args:
-            value: datetime - date to replace the publication year with.
+            author: User - the author of the book
+            title: str - title of the book
+            genre: str - the genre of the book
+            publication_date: datetime - the date when the book was published
         """
-        self._publication_year = value
+        self._book_id = uuid4()
+        self.author = author
+        self.title = title
+        self.genre = genre
+        self.publication_date = publication_date

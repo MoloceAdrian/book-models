@@ -1,34 +1,28 @@
 from datetime import datetime
 
-from book_models.models.author import Author
 from book_models.models.book import Book
+from book_models.models.user import User
 
 
 def test_book():
-    author = Author("Daniel Keyes", datetime(year=1927, month=8, day=9))
-    book = Book(author, "Flowers for Algernon", datetime(year=1959, month=4, day=0))
+    author = User("Daniel Keyes", "The Dragon Queen", "dracarys")
+    book = Book(author, "Flowers for Algernon", "Drama", datetime(year=1959, month=4, day=1))
 
-    assert book.get_author().get_name() == 'Daniel Keyes'
-    assert book.get_publication_date().year == 1927
-    assert book.get_title() == "Flowers for Algernon"
+    assert book.author.name == 'Daniel Keyes'
+    assert book.publication_date.year == 1959
+    assert book.title == "Flowers for Algernon"
 
-    book.set_publication_date(datetime.now())
-    assert book.get_publication_date().year == 2019
+    book.publication_date = datetime.now()
+    assert book.publication_date.year == 2019
 
 
-def test_author():
-    author = Author("Daniel Keyesee", datetime(year=1927, month=8, day=9))
-    book = Book(author, "Flowers for Algernon", datetime(year=1959, month=4, day=0))
+def test_user():
+    user = User("Adrian", "TheBoss", "secret")
 
-    assert author.get_name() == "Daniel Keyesee"
-    assert author.get_date_of_birth().year == 1927
+    assert user.name == "Adrian"
+    user.name = "Adrian M."
+    assert user.name == "Adrian M."
 
-    author.set_name("Daniel Keyes")
-    assert author.get_name() == "Daniel Keyes"
-
-    author.set_date_of_birth(datetime.now())
-    assert author.get_date_of_birth().year == 2019
-
-    assert len(author.get_books()) == 0
-    author.add_book(book)
-    assert len(author.get_books()) == 1
+    assert user.password == "secret"
+    user.password = "amuitatparola"
+    assert user.password == "amuitatparola"
