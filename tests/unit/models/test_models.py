@@ -5,10 +5,14 @@ from book_models.models.user import User
 
 
 def test_book():
-    author = User("Daniel Keyes", "The Dragon Queen", "dracarys")
-    book = Book(author, "Flowers for Algernon", "Drama", datetime(year=1959, month=4, day=1))
+    book = Book(
+        "Daniel Keyes",
+        "Flowers for Algernon",
+        genre="Drama",
+        publication_date=datetime(year=1959, month=4, day=1)
+    )
 
-    assert book.author.name == 'Daniel Keyes'
+    assert book.author == 'Daniel Keyes'
     assert book.publication_date.year == 1959
     assert book.title == "Flowers for Algernon"
 
