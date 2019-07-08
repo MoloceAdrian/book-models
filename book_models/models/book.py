@@ -8,7 +8,7 @@ class Book:
     """Basic model for a book."""
     def __init__(
             self,
-            authors: str,
+            list_of_authors: list,
             title: str,
             genre: Optional[str] = None,
             publisher: Optional[str] = None,
@@ -17,14 +17,14 @@ class Book:
         """Initializer.
 
         Args:
-            authors: User - the author(s) of the book
+            list_of_authors: User - the list of authors
             title: str - title of the book
             genre: str - the genre of the book
             publisher: str - The name of the publishing unit
             publication_date: datetime - the date when the book was published
         """
         self._book_id = uuid4()
-        self.authors = authors
+        self.list_of_authors = list_of_authors
         self.title = title
         self.genre = genre
         self.publisher = publisher
