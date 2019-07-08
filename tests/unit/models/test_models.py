@@ -12,7 +12,7 @@ def test_book():
         publication_date=datetime(year=1959, month=4, day=1)
     )
 
-    assert book.author == 'Daniel Keyes'
+    assert book.authors == 'Daniel Keyes'
     assert book.publication_date.year == 1959
     assert book.title == "Flowers for Algernon"
 
