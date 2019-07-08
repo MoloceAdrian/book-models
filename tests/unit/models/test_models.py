@@ -6,13 +6,13 @@ from book_models.models.user import User
 
 def test_book():
     book = Book(
-        "Daniel Keyes",
+        ["Daniel Keyes"],
         "Flowers for Algernon",
         genre="Drama",
         publication_date=datetime(year=1959, month=4, day=1)
     )
 
-    assert book.author == 'Daniel Keyes'
+    assert book.list_of_authors == ['Daniel Keyes']
     assert book.publication_date.year == 1959
     assert book.title == "Flowers for Algernon"
 
